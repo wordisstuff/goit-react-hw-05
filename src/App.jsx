@@ -21,7 +21,7 @@ async function fetchMovies () {
 }
 
 fetchMovies()
-  },[movies])
+  },[])
 
 
 
