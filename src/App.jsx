@@ -23,9 +23,7 @@ async function fetchMovies () {
   }
 }
 
-
-
-setMovies(requestMovies())
+fetchMovies()
   },[movies])
 
 
