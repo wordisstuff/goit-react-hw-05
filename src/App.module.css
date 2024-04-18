@@ -1,0 +1,21 @@
+.app{
+    position: relative;
+}
+
+.nav{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 5%;
+    
+}
+.navlink {
+    margin-right: 10px;
+    display: flex;
+    padding: 15px 20px;
+    border: 1px solid rgb(235, 71, 71);
+    background-color: rgb(235, 71, 71);
+    color: rgb(230, 226, 226);
+    text-decoration: none;
+    transition: all 0.3s;
+}
