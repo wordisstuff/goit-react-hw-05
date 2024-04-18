@@ -21,10 +21,10 @@ const Movie = ({adult,
               </div>
               <div className={CSS.imageInfo}>
                 <p>
-                  Author: <span>{user.name}</span>
+                Release date: <span>{release}</span>
                 </p>
                 <p>
-                  Likes: <span>{likes}</span>
+                Popularity: <span>{popularity}</span>
                 </p>
               </div>
             </li>
