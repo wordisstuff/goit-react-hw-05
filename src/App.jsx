@@ -12,11 +12,11 @@ function App() {
 async function fetchMovies () {
   try {
     const data = await requestMovies()
-    setMovies(data)
+    setMovies(data.results)
   } catch(error){
-    console.log("error")
+    console.log(error)
   }finally{
-    console.log('Finally')
+    console.log("Finally")
   }
 }
 
@@ -27,7 +27,7 @@ fetchMovies()
 
   return (
     <>
-  <MovieList movies={movies.results} />
+  <MovieList movies={movies} />
     </>
   )
 }
