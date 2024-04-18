@@ -12,7 +12,7 @@ const Movie = ({
   release,
 }) => {
   return (
-    <NavLink className={CSS.listLink} to={`/movies/${key}`}>
+    <NavLink className={CSS.listLink} to={`${key}`}>
       <li className={CSS.list}>
         <h2>{title}</h2>
         <div className={CSS.img}>
