@@ -14,7 +14,7 @@ const options = {
 };
 
 
-export const requestMovies = async ()=>{
+export const requestMovies = async () => {
    return await axios
     .request(options)
     .then(function (response) {
@@ -26,6 +26,14 @@ export const requestMovies = async ()=>{
     });
 } 
 
-
-
-// export const api = axios.create({baseUrl: ""})
+export const requestMoviesById = async (movieId) => {
+   return await axios
+    .request({...options, url: `https://api.themoviedb.org/3/movie/${movieId}`})
+    .then(function (response) {
+      console.log(response.data);
+      return response.data
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+} 

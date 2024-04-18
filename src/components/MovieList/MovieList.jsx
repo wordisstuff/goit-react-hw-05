@@ -11,7 +11,7 @@ const MovieList = ({ movies }) => {
               id,
               adult,
               title,
-              overview,
+              // overview,
               backdrop_path,
               poster_path,
               popularity,
@@ -22,12 +22,11 @@ const MovieList = ({ movies }) => {
                   key={id}
                   adult={adult}
                   title={title}
-                  overview={overview}
+                  // overview={overview}
                   backdrop={backdrop_path}
                   poster={poster_path}
                   popularity={popularity}
                   release={release_date}
-                  //  openModal={openModal}
                 />
               );
             }
