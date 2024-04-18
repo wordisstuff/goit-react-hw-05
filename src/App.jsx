@@ -1,35 +1,25 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import { requestMovies } from './services/api'
-import MovieList from './components/MovieList/MovieList'
+import { NavLink, Route, Routes } from "react-router-dom";
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import MoviesPage from "./pages/MoviesPage";
 
 function App() {
-  // const [count, setCount] = useState(0)
-  const [movies, setMovies] = useState(null)
-
-
-  useEffect(()=>{
-async function fetchMovies () {
-  try {
-    const data = await requestMovies()
-    setMovies(data.results)
-  } catch(error){
-    console.log(error)
-  }finally{
-    console.log("Finally")
-  }
-}
-
-fetchMovies()
-  },[])
-
-
-
   return (
-    <>
-  <MovieList movies={movies} />
-    </>
-  )
+    <div className="App">
+      <header className="App-header">
+        <nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/movies">Movies</NavLink>
+        </nav>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
