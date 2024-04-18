@@ -14,7 +14,7 @@ const Movie = ({adult,
                 <h2>{title}</h2>
                 <img
                   onClick={() => openModal({imgUrl:urls.regular,description: alt_description })}
-                  src={`https://image.tmdb.org/t/p/w500${poster}`}
+                  src={`https://image.tmdb.org/t/p/w300${poster}`}
                   alt={title}
                 />
                 <p>{overview}</p>
