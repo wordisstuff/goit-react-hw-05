@@ -3,6 +3,7 @@ import CSS from "./Movie.module.css";
 
 const Movie = ({
   // adult,
+  key,
   title,
   overview,
   //  backdrop,
@@ -11,7 +12,7 @@ const Movie = ({
   release,
 }) => {
   return (
-    <NavLink className={CSS.listLink} to={`/movies/${title}`}>
+    <NavLink className={CSS.listLink} to={`/movies/${key}`}>
       <li className={CSS.list}>
         <h2>{title}</h2>
         <div className={CSS.img}>
