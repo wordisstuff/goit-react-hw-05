@@ -5,9 +5,9 @@ import { useSearchParams } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  console.log(searchParams.get('name'));
   useEffect(() => {
-    async function fetchMovies() {
+    async function fetchMovieDetails() {
       try {
         const data = await requestMoviesById();
         //   setMovies(data.results);
@@ -18,7 +18,7 @@ const MovieDetailsPage = () => {
       }
     }
 
-    fetchMovies();
+    fetchMovieDetails();
   }, []);
   return (
     <div>
