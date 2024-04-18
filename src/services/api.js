@@ -15,7 +15,7 @@ const options = {
 
 
 export const requestMovies = async ()=>{
-    axios
+    await axios
     .request(options)
     .then(function (response) {
       console.log(response.data);
