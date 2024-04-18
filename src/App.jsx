@@ -11,6 +11,15 @@ function App() {
 
 
   useEffect(()=>{
+async function fetchMovies () {
+  try {
+    const data = await requestMovies()
+    setMovies(data)
+  }
+}
+
+
+
 setMovies(requestMovies())
   },[movies])
 
