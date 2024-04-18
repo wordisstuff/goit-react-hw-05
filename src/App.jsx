@@ -12,13 +12,13 @@ function App() {
 
   useEffect(()=>{
 setMovies(requestMovies())
-  })
+  },[movies])
 
 
 
   return (
     <>
-  <MovieList movies={movies} />
+  <MovieList movies={movies.results} />
     </>
   )
 }
