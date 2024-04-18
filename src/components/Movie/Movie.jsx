@@ -10,8 +10,8 @@ const Movie = ({adult,
  
           return (
             <li className={CSS.list}>
+              <h2>{title}</h2>
               <div className={CSS.img}>
-                <h2>{title}</h2>
                 <img
                   onClick={() => openModal({imgUrl:urls.regular,description: alt_description })}
                   src={`https://image.tmdb.org/t/p/w300${poster}`}
