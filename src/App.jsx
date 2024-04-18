@@ -11,7 +11,6 @@ function App() {
 
 
   useEffect(()=>{
-    if (movies === null) return;
 setMovies(requestMovies())
   },[movies])
 
