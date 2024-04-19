@@ -2,22 +2,24 @@ import { NavLink } from "react-router-dom";
 import CSS from "./Movie.module.css";
 
 const Movie = ({
-  // adult,
-  key,
   title,
   overview,
   //  backdrop,
   poster,
   popularity,
   release,
+  id,
 }) => {
-
-const handleDetailes = ()=>{
-console.log(title,key,id)
-}
+  const handleDetailes = () => {
+    console.log(id);
+  };
 
   return (
-    <NavLink onClick={()=>handleDetailes()} className={CSS.listLink} to={`/movies/${id}`}>
+    <NavLink
+      onClick={handleDetailes}
+      className={CSS.listLink}
+      to={`/movies/${id}`}
+    >
       <li className={CSS.list}>
         <h2>{title}</h2>
         <div className={CSS.img}>
