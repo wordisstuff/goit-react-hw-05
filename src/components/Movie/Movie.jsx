@@ -11,8 +11,13 @@ const Movie = ({
   popularity,
   release,
 }) => {
+
+const handleDetailes = ()=>{
+console.log(title,key)
+}
+
   return (
-    <NavLink className={CSS.listLink} to={`/movies/${title}`}>
+    <NavLink onClick={handleDetailes} className={CSS.listLink} to={`/movies/${title}`}>
       <li className={CSS.list}>
         <h2>{title}</h2>
         <div className={CSS.img}>
