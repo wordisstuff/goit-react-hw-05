@@ -20,6 +20,7 @@ const MovieList = ({ movies }) => {
               return (
                 <Movie
                   key={id}
+                  id={id}
                   adult={adult}
                   title={title}
                   // overview={overview}
