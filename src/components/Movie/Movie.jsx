@@ -13,7 +13,7 @@ const Movie = ({
 }) => {
 
 const handleDetailes = ()=>{
-console.log(title,key)
+console.log(title,key,id)
 }
 
   return (
