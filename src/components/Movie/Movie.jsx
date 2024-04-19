@@ -17,7 +17,7 @@ console.log(title,key,id)
 }
 
   return (
-    <NavLink onClick={handleDetailes} className={CSS.listLink} to={`/movies/${title}`}>
+    <NavLink onClick={handleDetailes} className={CSS.listLink} to={`/movies/${id}`}>
       <li className={CSS.list}>
         <h2>{title}</h2>
         <div className={CSS.img}>
