@@ -37,3 +37,29 @@ export const requestMoviesById = async (movieId) => {
       console.error(error);
     });
 } 
+
+export const requestCastByMovieId = async (reviewersId) => {
+   return await axios
+    .request({...options, url: `https://api.themoviedb.org/3/movie/${reviewersId}/credits`,})
+    .then(function (response) {
+      console.log(response.data);
+      return response.data
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  
+}
+
+export const requestReviewsByMovieId = async (reviewersId) => {
+   return await axios
+    .request({...options, url: `https://api.themoviedb.org/3/movie/${reviewersId}/reviews`,})
+    .then(function (response) {
+      console.log(response.data);
+      return response.data
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  
+}
