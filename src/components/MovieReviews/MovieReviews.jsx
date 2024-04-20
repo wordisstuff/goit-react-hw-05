@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { requestReviewsByMovieId } from "../../services/api";
+import { getMovieReviews } from "../../services/api";
 import Reviews from "../Reviews/Reviews";
 
 const MovieReviews = () => {
@@ -9,8 +9,8 @@ const MovieReviews = () => {
   useEffect(() => {
     async function fetchMovieDetails() {
       try {
-        const data = await requestReviewsByMovieId(movieId);
-        setMovieReviews(data);
+        const reviews = await getMovieReviews(movieId);
+        setMovieReviews(reviews);
       } catch (error) {
         console.log(error);
       } finally {
@@ -24,7 +24,7 @@ const MovieReviews = () => {
   return (
     <>
       <h2>Movie Reviews</h2>
-      <ul>{movieReviews && <Reviews data={movieReviews.results} />}</ul>
+      <ul>{movieReviews && <Reviews data={movieReviews} />}</ul>
     </>
   );
 };

@@ -1,78 +1,38 @@
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjRkN2IwNzg5OTQwOGM1MTBlM2RmYzgwYTU2ZjUwOSIsInN1YiI6IjY2MjA0NzEzZWNhZWY1MDE2M2Y5Yjk5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zePi9NJQsYyKYadY4o_bn0PQ2z4Myq9X5-gv6YSxrWI
+import axios from "axios";
 
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
+axios.defaults.params = {
+  language: "en-US",
+};
+axios.defaults.headers.common.Authorization =
+  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjRkN2IwNzg5OTQwOGM1MTBlM2RmYzgwYTU2ZjUwOSIsInN1YiI6IjY2MjA0NzEzZWNhZWY1MDE2M2Y5Yjk5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zePi9NJQsYyKYadY4o_bn0PQ2z4Myq9X5-gv6YSxrWI";
 
-import axios from 'axios';
-
-const options = {
-  method: 'GET',
-  url: 'https://api.themoviedb.org/3/trending/movie/day',
-  params: {language: 'en-US'},
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MjRkN2IwNzg5OTQwOGM1MTBlM2RmYzgwYTU2ZjUwOSIsInN1YiI6IjY2MjA0NzEzZWNhZWY1MDE2M2Y5Yjk5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zePi9NJQsYyKYadY4o_bn0PQ2z4Myq9X5-gv6YSxrWI'
-  }
+export const getTrendingMovies = async () => {
+  const { data } = await axios.get("/trending/movie/day");
+  return data.results;
 };
 
+export const getMovieById = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}`);
+  return data;
+};
 
-export const requestMovies = async () => {
-   return await axios
-    .request(options)
-    .then(function (response) {
-      console.log(response.data);
-      return response.data
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-} 
+export const getMovieCast = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}/credits`);
+  return data.cast;
+};
+export const getMovieReviews = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}/reviews`);
+  return data.results;
+};
 
-export const requestMoviesById = async (movieId) => {
-   return await axios
-    .request({...options, url: `https://api.themoviedb.org/3/movie/${movieId}`,})
-    .then(function (response) {
-      console.log(response.data);
-      return response.data
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-} 
+export const getMoviesByQuery = async (query) => {
+  const { data } = await axios.get("/search/movie", {
+    params: {
+      adult: false,
+      query,
+    },
+  });
 
-export const requestCastByMovieId = async (reviewersId) => {
-   return await axios
-    .request({...options, url: `https://api.themoviedb.org/3/movie/${reviewersId}/credits`,})
-    .then(function (response) {
-      console.log(response.data);
-      return response.data
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  
-}
-
-export const requestReviewsByMovieId = async (reviewersId) => {
-   return await axios
-    .request({...options, url: `https://api.themoviedb.org/3/movie/${reviewersId}/reviews`,})
-    .then(function (response) {
-      console.log(response.data);
-      return response.data
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  
-}
-
-export const requesMovieByQuery = async (query) => {
-   return await axios
-    .request({...options, params:{...options.params,query: query},url: 'https://api.themoviedb.org/3/search/movie',})
-    .then(function (response) {
-      console.log(response.data);
-      return response.data
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  
-}
+  return data.results;
+};

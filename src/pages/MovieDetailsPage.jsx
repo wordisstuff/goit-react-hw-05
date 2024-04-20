@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { requestMoviesById } from "../services/api";
+import { getMovieById } from "../services/api";
 import { NavLink, useParams, Routes, Route } from "react-router-dom";
 import MovieCast from "../components/MovieCast/MovieCast";
 import MovieReviews from "../components/MovieReviews/MovieReviews";
@@ -25,19 +25,14 @@ const StaledLink = styled.div`
   }
 `;
 const MovieDetailsPage = () => {
-  const [movieIdState, setMovieIdState] = useState(null);
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
-  if (movieIdState !== movieId) {
-    setMovieIdState(movieId);
-  }
 
   useEffect(() => {
     async function fetchMovieDetailsCast() {
       try {
-        const data = await requestMoviesById(movieId);
-        console.log(data);
-        setMovieDetails(data);
+        const muvie = await getMovieById(movieId);
+        setMovieDetails(muvie);
       } catch (error) {
         console.log(error);
       } finally {

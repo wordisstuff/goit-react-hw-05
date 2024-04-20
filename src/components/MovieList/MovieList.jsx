@@ -11,7 +11,6 @@ const MovieList = ({ movies }) => {
               id,
               adult,
               title,
-              // overview,
               backdrop_path,
               poster_path,
               popularity,
@@ -23,7 +22,6 @@ const MovieList = ({ movies }) => {
                   id={id}
                   adult={adult}
                   title={title}
-                  // overview={overview}
                   backdrop={backdrop_path}
                   poster={poster_path}
                   popularity={popularity}

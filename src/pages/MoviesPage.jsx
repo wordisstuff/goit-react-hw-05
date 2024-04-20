@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { requesMovieByQuery } from "../services/api";
+import { getMoviesByQuery } from "../services/api";
 import MovieList from "../components/MovieList/MovieList";
 
 const MoviesPage = () => {
@@ -10,8 +10,8 @@ const MoviesPage = () => {
   useEffect(() => {
     async function fetchMovies() {
       try {
-        const data = await requesMovieByQuery(query);
-        setMovies(data.results);
+        const movies = await getMoviesByQuery(query);
+        setMovies(movies);
       } catch (error) {
         console.log(error);
       } finally {
