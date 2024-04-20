@@ -28,7 +28,7 @@ export const requestMovies = async () => {
 
 export const requestMoviesById = async (movieId) => {
    return await axios
-    .request({...options, url: `https://api.themoviedb.org/3/movie/${movieId}`})
+    .request({...options, url: `https://api.themoviedb.org/3/movie/${movieId}`,})
     .then(function (response) {
       console.log(response.data);
       return response.data
@@ -54,6 +54,19 @@ export const requestCastByMovieId = async (reviewersId) => {
 export const requestReviewsByMovieId = async (reviewersId) => {
    return await axios
     .request({...options, url: `https://api.themoviedb.org/3/movie/${reviewersId}/reviews`,})
+    .then(function (response) {
+      console.log(response.data);
+      return response.data
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  
+}
+
+export const requesMovieByQuery = async (query) => {
+   return await axios
+    .request({...options, params:{...options.params,query: query},url: 'https://api.themoviedb.org/3/search/movie',})
     .then(function (response) {
       console.log(response.data);
       return response.data
