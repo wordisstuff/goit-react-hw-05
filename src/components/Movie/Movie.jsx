@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import CSS from "./Movie.module.css";
 
 const Movie = ({
+  location,
   title,
   overview,
   //  backdrop,
@@ -11,7 +12,11 @@ const Movie = ({
   id,
 }) => {
   return (
-    <Link className={CSS.listLink} to={`/movies/${id}`}>
+    <Link
+      className={CSS.listLink}
+      to={`/movies/${id}`}
+      state={{ from: location }}
+    >
       <li className={CSS.list}>
         <h2>{title}</h2>
         <div className={CSS.img}>

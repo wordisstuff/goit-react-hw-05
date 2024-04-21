@@ -1,6 +1,5 @@
 import CSS from "./Reviews.module.css";
 const Reviews = ({ data }) => {
-  console.log("rev", data);
   if (data.length === 0) return <p> No reviews</p>;
   return (
     <div>

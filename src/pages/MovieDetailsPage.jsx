@@ -1,48 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMovieById } from "../services/api";
-import { NavLink, useParams, Routes, Route } from "react-router-dom";
+import { useParams, Routes, Route, Link } from "react-router-dom";
 import MovieCast from "../components/MovieCast/MovieCast";
 import MovieReviews from "../components/MovieReviews/MovieReviews";
+import { useLocation } from "react-router-dom";
 
 import styled from "styled-components";
+import Loader from "../components/Loader/Loader";
+import Navigation from "../components/Navigation/Navigation";
 
 const StaledLink = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  .link {
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(103, 102, 102);
-    padding: 15px 20px;
-    color: bisque;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
   .active {
     background-color: rgb(235, 71, 71);
   }
 `;
 const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { movieId } = useParams();
+  const location = useLocation();
+
+  const backLink = useRef(location.state?.from ?? "/movies");
 
   useEffect(() => {
     async function fetchMovieDetailsCast() {
       try {
+        setIsLoading(true);
         const muvie = await getMovieById(movieId);
         setMovieDetails(muvie);
       } catch (error) {
         console.log(error);
       } finally {
-        console.log("Finally");
+        setIsLoading(false);
       }
     }
     fetchMovieDetailsCast();
   }, [movieId]);
   return (
     <div>
+      {isLoading && <Loader />}
       {movieDetails && (
         <div className={CSS.img}>
           <img
@@ -52,14 +49,11 @@ const MovieDetailsPage = () => {
           <p>{movieDetails.overview}</p>
         </div>
       )}
+      <Link to={backLink.current}>Go back</Link>
       <StaledLink>
-        <NavLink className={"link"} to="cast">
-          Cast
-        </NavLink>
-        <NavLink className={"link"} to="reviews">
-          Reviews
-        </NavLink>
+        <Navigation first="cast" second="reviews" />
       </StaledLink>
+
       <Routes>
         <Route path="cast" element={<MovieCast />} />
         <Route path="reviews" element={<MovieReviews />} />

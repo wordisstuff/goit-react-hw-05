@@ -1,0 +1,18 @@
+.navigation{margin-top: 20px;
+display: flex;
+justify-content: center;
+gap: 20px;}
+
+.link {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(178, 175, 175);
+    padding: 15px 20px;
+    color: bisque;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.link .active {
+    background-color: rgb(235, 71, 71);
+}
