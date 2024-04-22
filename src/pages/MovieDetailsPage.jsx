@@ -1,8 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { getMovieById } from "../services/api";
 import { useParams, Routes, Route, Link } from "react-router-dom";
-import MovieCast from "../components/MovieCast/MovieCast";
-import MovieReviews from "../components/MovieReviews/MovieReviews";
+
+const MovieCast = lazy(() => import("../components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() =>
+  import("../components/MovieReviews/MovieReviews")
+);
+
 import { useLocation } from "react-router-dom";
 
 import styled from "styled-components";
@@ -53,11 +57,12 @@ const MovieDetailsPage = () => {
       <StaledLink>
         <Navigation first="cast" second="reviews" />
       </StaledLink>
-
-      <Routes>
-        <Route path="cast" element={<MovieCast />} />
-        <Route path="reviews" element={<MovieReviews />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };
